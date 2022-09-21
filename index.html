@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <header>
+        <div class="tab">
+            <button class="tablinks" onclick="openTab(event,'Registration')">Registration</button>
+            <button class="tablinks" onclick="openTab(event,'User-List')">User-List</button>
+    </header>
+
+    <div id='Registration' class="tabcontent">
+        <div id="form-div">
+            <form onsubmit="onFormSubmit(event)">
+                <table id="form-table">
+                    <tr><span id="success" style="display: none;">Details Submitted Successfully.</span>
+                        <span id="update-success" style="display: none;">Details Updated Successfully.</span>
+                    </tr>
+                    <tr>
+                        <td><label for="username">UserName: </label></td>
+                        <td><input type="text" id="username" required>
+                            <input type="hidden" id="saveIndex">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="email">Email: </label></td>
+                        <td><input type="email" name="email" id="email" required>
+                            <span id="emailAlert" style="display:none"> User with this email is already registered,
+                                Please use another.</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="phno">Phone Number: </label></td>
+                        <td><input type="tel number" name="phno" id="phno" maxlength="10" required></td>
+                    </tr>
+                    <tr>
+                        <td><label for="dob">Date Of Birth: </label></td>
+                        <td><input type="date" name="dob" id="dob" required></td>
+                    </tr>
+                    <tr>
+                        <td>Gender: </td>
+                        <td>
+                            <div>
+                                <p><label for="male">Male</label><input type="radio" value="male" name="gender"
+                                        onchange="genderValue();" id="male" required></p>
+                                <p><label for="female">Female</label><input type="radio" value="female" name="gender"
+                                        onchange="genderValue();" id="female"></p>
+                                <p><label for="other">Other</label><input type="radio" value="other" name="gender"
+                                        onchange="genderValue();" id="other"></p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="qualifications">Highest Qualifications: </label></td>
+                        <td> <select id="qualifications" onchange="getSelectValue();" required>
+                                <option value="10th">10th</option>
+                                <option value="12th">12th</option>
+                                <option value="Graduate">Graduate</option>
+                                <option value="PG">Post Graduate</option>
+                            </select></td>
+                    </tr>
+                    <tr>
+                        <td><label for="profile">Upload Your Profile: </label></td>
+                        <td><input type="file" id="profile" accept="image/*" onchange="uploadImage();" required></td>
+                    </tr>
+                    <div id="demo"  style="display: none;">
+                        <img src="" alt="demo-image" id="demo-image">
+                    </div>
+                   
+                    <tr>
+                        <td><button class="form-buttons" onclick="resetForm()" type="reset">Reset</button></td>
+                        <td><button class="form-buttons" type="submit" id="submitbtn"
+                                style="display:block;">Submit</button>
+                            <button class="form-buttons" id="update" onclick="updateRecord();"
+                                style="display:none;">Update</button>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+    <div id='User-List' class="tabcontent">
+        <div id="table-div">
+            <table id="user-table">
+                <thead>
+                    <tr>
+                        <td>S. No.</td>
+                        <td>UserName</td>
+                        <td>Email</td>
+                        <td>Action</td>
+                    </tr>
+                </thead>
+                <tbody id="user-table-body">
+
+                </tbody>
+            </table>
+            <span id="delete-success" style="display: none;">Details Deleted Successfully.</span>
+        </div>
+
+        <div id="modal-box" style="display:none;">
+
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
