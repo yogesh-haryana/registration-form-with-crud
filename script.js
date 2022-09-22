@@ -11,7 +11,7 @@ function openTab(event, buttonName) {
     }
     document.getElementById(buttonName).style.display = "block";
     // event.target.className += " active";
-    
+
 }
 openTab(event, 'Registration');
 
@@ -31,7 +31,7 @@ function onFormSubmit(event) {
         resetForm();
         successMsg.style.display = "block";
         updateMsg.style.display = "none";
-       
+
     }
     else {
         emailAlert.style.display = "block";
@@ -44,12 +44,14 @@ isEmailValid = () => {
 
     userData = JSON.parse(localStorage.getItem('userdata'));
     let status = false;
-    for (let i = 0; i < userData.length; i++) {
 
-        if (emailValue === userData[i].email) {
-            status = true;
+    if (userData) {
+        for (let i = 0; i < userData.length; i++) {
+
+            if (emailValue === userData[i].email) {
+                status = true;
+            }
         }
-
     }
     return status;
 }
@@ -195,7 +197,7 @@ function onEdit(index) {
 //--------------------updating data--------------------------
 
 function updateRecord() {
-    
+
     const submitbtn = document.getElementById("submitbtn");
     const updatebtn = document.getElementById("update");
     let genderHere = document.getElementsByName("gender");
@@ -221,7 +223,7 @@ function updateRecord() {
     updatebtn.style.display = "none";
     updateMsg.style.display = "block";
     successMsg.style.display = "none";
-    
+
 }
 
 //-----------------------delete button------------------------
