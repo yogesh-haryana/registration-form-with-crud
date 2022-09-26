@@ -1,14 +1,12 @@
-body{
-    background-color:#FFF6BF ;
-    
+body {
+    background-color: #FFF6BF;
+    font-size: 1.5rem;
 }
-
 .tab {
     overflow: hidden;
     border: 1px solid #ccc;
     background-color: #f1f1f1;
 }
-
 .tab button {
     background-color: inherit;
     float: left;
@@ -19,55 +17,140 @@ body{
     transition: 0.3s;
     font-size: 17px;
 }
-
 .tab button:hover {
     background-color: #ddd;
 }
-
 .tab button.active {
     background-color: #ccc;
 }
 .tabcontent {
     display: none;
     padding: 6px 12px;
-    border: 1px solid #ccc;
-    border-top: none;
 }
-#user-table{
-    border: 1px solid black;
-    width: 70%;
-    text-align: center;
-    margin: 30px auto 0 auto;
-}
-.form-buttons{
+
+
+.form-buttons {
     margin-top: 20px;
     width: 75px;
     height: 25px;
 }
-td a {
+
+#Registration {
+    margin: 0 220px;
+}
+
+label {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 4px 0;
+    display: block;
+
+}
+
+input {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 4px 0;
+    display: block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+[type=text],
+select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=submit],
+[type=reset] {
+    width: 49%;
+    display: inline-block;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin-top: 40px;
+    border: none;
+    border-radius: 4px;
     cursor: pointer;
+
 }
-input{
-    width: 180px;
+
+input :not(#submitbtn):focus {
+    background-color: rgb(224, 243, 252);
 }
-#form-table{
-    width: 70% ;
-     border: 1px solid black;
-   margin: 30px auto 0 auto;
-    font-size: 1rem;
-    text-align: left;
-    padding: 10px;
+
+input[type=submit]:hover {
+    background-color: #0a600f;
 }
-#user-table td{
-    border: 1px solid black;
+
+input[type=reset]:hover {
+    background-color: #fa850f;
 }
-#modal-box{
+
+form span {
+    color: red;
+    display: none;
+}
+
+#modal-box {
     display: inline;
 }
-#view-table{
+
+#view-table {
     margin: 30px auto 0 auto;
 }
-#user-dp{
-   justify-content: center;
-text-align: center;
+
+#user-dp {
+    justify-content: center;
+    text-align: center;
+    height: 200px;
+    width: 180px;
+}
+
+#successmsg,
+#updatemsg,
+#delete-success {
+    color: green;
+}
+
+#updatebtn {
+    width: 48%;
+    display: inline-block;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin-top: 40px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+a {
+    cursor: pointer;
+}
+
+a:link {
+    color: red;
+}
+
+
+a:visited {
+    color: green;
+}
+
+
+a:hover {
+    color: blue;
+}
+
+
+a:active {
+    color: blue;
 }
