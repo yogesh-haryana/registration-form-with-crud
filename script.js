@@ -126,6 +126,22 @@ let genderValue = () => {
         }
     }
 }
+$(document).ready(function () {
+    var currentDate = new Date();
+    $('#dob').datepicker({
+        format: 'dd/mm/yyyy',
+        autoclose: true,
+        endDate: "currentDate",
+        maxDate: currentDate
+    }).on('changeDate', function (ev) {
+        $(this).datepicker('hide');
+    });
+    $('#dob').keyup(function () {
+        if (this.value.match(/[^0-9]/g)) {
+            this.value = this.value.replace(/[^0-9^-]/g, '');
+        }
+    });
+});
 let genderValueReset = () => {
 
     for (let i = 0; i < gender.length; i++) {
@@ -231,13 +247,13 @@ function resetForm() {
     dobMsg.style.display = "none";
     emailMsg.style.display = "none";
     usernameMsg.style.display = "none";
-    preview.style.display="none";
-
+    preview.style.display = "none";
+   
 
 }
 
-//----------------edit button ------------------------------------
 
+//----------------edit button ------------------------------------
 function onEdit(index) {
     updateMsg.style.display = "none";
     successMsg.style.display = "none";
@@ -293,9 +309,7 @@ function updateRecord() {
     resetForm();
     submitbtn.style.display = "block";
     updatebtn.style.display = "none";
-    updateMsg.style.display= "block";
-    // e.stopPropagation();
-    // preventDefault();
+    updateMsg.style.display = "block";
 
 }
 
