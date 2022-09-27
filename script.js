@@ -11,7 +11,6 @@ function openTab(event, buttonName) {
     }
     document.getElementById(buttonName).style.display = "block";
     // event.target.className += " active";
-    // modalbox.style.display = "none";
 }
 openTab(event, 'Registration');
 
@@ -256,7 +255,7 @@ function resetForm() {
 function onEdit(index) {
     updateMsg.style.display = "none";
     successMsg.style.display = "none";
-    modalbox.style.display = "none";
+
 
     let genderHere = document.getElementsByName("gender");
     saveIndex.value = index;
@@ -315,7 +314,6 @@ function updateRecord() {
 //-----------------------delete button------------------------
 
 function onDelete(index) {
-    modalbox.style.display = "none";
     updateMsg.style.display = "none";
     successMsg.style.display = "none";
 
