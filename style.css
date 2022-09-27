@@ -129,26 +129,26 @@ form span {
     cursor: pointer;
 }
 
-a {
+td a {
     cursor: pointer;
 }
 
-a:link {
+td a:link {
     color: red;
 }
 
 
-a:visited {
+td a:visited {
     color: green;
 }
 
 
-a:hover {
+td a:hover {
     color: blue;
 }
 
 
-a:active {
+td a:active {
     color: blue;
 }
 .overlay{
@@ -177,17 +177,18 @@ opacity: 1;
     position: relative;
     transition: all 5s ease-in-out;
 }
-.popup.close{
+#close{
     position: absolute;
     top: 20px;
-    left: 30px;
+    right: 30px;
     transition: all 200ms;
     font-size: 30px;
     color: #333;
+    text-decoration: none;
 
 }
-.popup.close:hover{
-    color: greenyellow;
+#close:hover{
+    color: red;
 
 }
 .popup.content{
