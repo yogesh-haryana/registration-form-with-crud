@@ -99,20 +99,17 @@ form span {
     display: none;
 }
 
-#modal-box {
-    display: inline;
-}
 
+#user-dp {
+    align-items: center;
+    height: 200px;
+    width: 180px;
+}
+ 
 #view-table {
     margin: 30px auto 0 auto;
 }
 
-#user-dp {
-    justify-content: center;
-    text-align: center;
-    height: 200px;
-    width: 180px;
-}
 
 #successmsg,
 #updatemsg,
@@ -153,4 +150,47 @@ a:hover {
 
 a:active {
     color: blue;
+}
+.overlay{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+
+
+}
+.overlay:target{
+visibility: visible;
+opacity: 1;
+}
+.popup{
+    margin: 70px auto;
+    padding: 20px;
+    background: whitesmoke;
+    border-radius: 5px;
+    width: 45%;
+    position: relative;
+    transition: all 5s ease-in-out;
+}
+.popup.close{
+    position: absolute;
+    top: 20px;
+    left: 30px;
+    transition: all 200ms;
+    font-size: 30px;
+    color: #333;
+
+}
+.popup.close:hover{
+    color: greenyellow;
+
+}
+.popup.content{
+    max-height: 45%;
+    overflow: auto;
 }

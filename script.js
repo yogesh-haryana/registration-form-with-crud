@@ -1,5 +1,4 @@
 recordInTheTable();
-const modalbox = document.getElementById("modal-box");
 function openTab(event, buttonName) {
     var i, tabcontent, tablinks;
     tabcontent = document.getElementsByClassName("tabcontent");
@@ -12,7 +11,7 @@ function openTab(event, buttonName) {
     }
     document.getElementById(buttonName).style.display = "block";
     // event.target.className += " active";
-    modalbox.style.display = "none";
+    // modalbox.style.display = "none";
 }
 openTab(event, 'Registration');
 
@@ -32,7 +31,7 @@ const submitbtn = document.getElementById("submitbtn");
 const updatebtn = document.getElementById("updatebtn");
 const preview = document.getElementById("preview");
 const mobileNan = document.getElementById("mobileNan");
-
+const popupContent = document.getElementsByClassName("content")[0];
 
 let username = document.studentForm.username;
 let email = document.studentForm.email;
@@ -215,7 +214,7 @@ function recordInTheTable() {
                         <td>${formData.email}</td>
                         <td><a onClick="onEdit(${index})">Edit</a> 
                         <a onClick="onDelete(${index})">Delete</a> 
-                        <a onClick="onView(${index})">View</a></td>
+                        <a href="#modal" onClick="onView(${index})">View</a></td>
                  </tr>`
 
     });
@@ -248,7 +247,7 @@ function resetForm() {
     emailMsg.style.display = "none";
     usernameMsg.style.display = "none";
     preview.style.display = "none";
-   
+
 
 }
 
@@ -339,14 +338,14 @@ function onView(index) {
     updateMsg.style.display = "none";
     successMsg.style.display = "none";
     deleteMsg.style.display = "none";
-    modalbox.style.display = "block";
+
     userData = JSON.parse(localStorage.getItem('userdata'));
     let showURL = userData[index].profile;
 
     let viewHtml = '';
     viewHtml += `<table id="view-table">
     <tr>
-    <td><img src="${showURL}" alt="" id ="user-dp"></td>
+    <td><img src="${showURL}" id ="user-dp"></td>
 </tr>
 <tr>
     <td>UserName : </td>
@@ -375,5 +374,5 @@ function onView(index) {
 </table>
 
 `
-    modalbox.innerHTML = viewHtml;
+    popupContent.innerHTML = viewHtml;
 }

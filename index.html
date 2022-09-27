@@ -12,7 +12,7 @@
 
     <script type="text/javascript" charset="utf8"
         src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
-        <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
     <link rel="stylesheet" href="style.css">
 </head>
@@ -112,10 +112,18 @@
             <span id="delete-success" style="display: none;">Details Deleted Successfully.</span>
         </div>
 
-        <div id="modal-box" style="display:none;">
+
+        <div id="modal" class="overlay">
+            <div class="popup">
+                <a href="#" class="close">Close Modal</a>
+                <div class="content">
+                <!-- popup content will inject here -->
+                </div>
+            </div>
 
         </div>
     </div>
+
     <script src="script.js"></script>
 </body>
 
