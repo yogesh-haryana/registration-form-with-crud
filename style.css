@@ -44,7 +44,6 @@ label {
     padding: 12px 20px;
     margin: 4px 0;
     display: block;
-
 }
 
 input {
@@ -99,7 +98,6 @@ form span {
     display: none;
 }
 
-
 #user-dp {
     align-items: center;
     height: 200px;
@@ -128,25 +126,19 @@ form span {
     border-radius: 4px;
     cursor: pointer;
 }
+#user-table{
+    width: 80vw;
+}
 
 td a {
     cursor: pointer;
-}
-
-td a:link {
-    color: red;
-}
-
-
-td a:visited {
+    text-decoration: none;
     color: green;
 }
-
 
 td a:hover {
     color: blue;
 }
-
 
 td a:active {
     color: blue;

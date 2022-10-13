@@ -127,11 +127,11 @@ let genderValue = () => {
 $(document).ready(function () {
     var currentDate = new Date();
     $('#dob').datepicker({
-        format: 'dd/mm/yyyy',
+        format: 'yyyy-mm-dd',
         autoclose: true,
         endDate: "currentDate",
         maxDate: currentDate
-    }).on('changeDate', function (ev) {
+    }).on('changeDate', function () {
         $(this).datepicker('hide');
     });
     $('#dob').keyup(function () {
@@ -196,7 +196,6 @@ function saveToLocalStorage() {
 //---------showing essential information in tabular form with the data in localstorage
 
 function recordInTheTable() {
-    let index;
     let oldRecords = localStorage.getItem('userdata');
     if (oldRecords == null) {
         userData = [];
@@ -278,7 +277,6 @@ function onEdit(index) {
     submitbtn.style.display = "none";
     updatebtn.style.display = "block";
     openTab(event, 'Registration');
-
 
 }
 

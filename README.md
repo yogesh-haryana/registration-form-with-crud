@@ -2,7 +2,7 @@
 
 ## Setup Project
 
-Clone the application from `git remote add origin https://github.com/yogesh-haryana/registration-form-with-crud.git`
+Clone the application from `git clone https://github.com/yogesh-haryana/registration-form-with-crud.git`
 
 
 ### Install LiveServer Extension
