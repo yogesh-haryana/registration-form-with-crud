@@ -210,9 +210,9 @@ function recordInTheTable() {
                         <td>${index + 1}</td>
                         <td>${formData.username}</td>
                         <td>${formData.email}</td>
-                        <td><a onClick="onEdit(${index})">Edit</a> 
-                        <a onClick="onDelete(${index})">Delete</a> 
-                        <a href="#modal" onClick="onView(${index})">View</a></td>
+                        <td><a onClick="onEdit(${index})"> <i class="fa fa-pencil" aria-hidden="true"></i> </a> 
+                        <a onClick="onDelete(${index})"> <i class="fa fa-trash-o" aria-hidden="true"></i> </a> 
+                        <a href="#modal" onClick="onView(${index})"> <i class="fa fa-eye" aria-hidden="true"></i> </a></td>
                  </tr>`
 
     });
@@ -371,4 +371,6 @@ function onView(index) {
 
 `
     popupContent.innerHTML = viewHtml;
+    recordInTheTable();
+
 }

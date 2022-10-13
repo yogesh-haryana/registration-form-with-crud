@@ -131,9 +131,10 @@ form span {
 }
 
 td a {
+    font-size: 1.2rem;
     cursor: pointer;
     text-decoration: none;
-    color: green;
+    /* color: green; */
 }
 
 td a:hover {
