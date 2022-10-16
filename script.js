@@ -7,13 +7,12 @@ function openTab(event, buttonName) {
     }
     tablinks = document.getElementsByClassName("tablinks");
     for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace("active", " ");
+        tablinks[i].className = tablinks[i].className.replace("active", "");
     }
     document.getElementById(buttonName).style.display = "block";
     // event.target.className += " active";
 }
 openTab(event, 'Registration');
-
 const deleteMsg = document.getElementById("delete-success");
 const usernameMsg = document.getElementById("usernameMsg");
 const emailMsg = document.getElementById("emailMsg");
@@ -31,6 +30,7 @@ const updatebtn = document.getElementById("updatebtn");
 const preview = document.getElementById("preview-profile");
 const mobileNan = document.getElementById("mobileNan");
 const popupContent = document.getElementsByClassName("content")[0];
+const userdp = document.getElementById("user-dp")
 
 let username = document.studentForm.username;
 let email = document.studentForm.email;
@@ -45,7 +45,6 @@ function onFormSubmit(event) {
     if (Validate() === true) {
         let emailValidIndex = isEmailValid();
         if (emailValidIndex === false) {
-
             formData = readFormData();
             saveToLocalStorage();
             recordInTheTable();
@@ -53,13 +52,11 @@ function onFormSubmit(event) {
             successMsg.style.display = "block";
             updateMsg.style.display = "none";
             mobileNan.style.display = "none";
-
         }
         else {
             emailAlert.style.display = "block";
             validationMessages();
         }
-
     }
     event.preventDefault();
 }
@@ -117,7 +114,6 @@ isEmailValid = () => {
     return status;
 }
 
-
 let genderValue = () => {
 
     for (let i = 0; i < gender.length; i++) {
@@ -153,7 +149,6 @@ let getSelectValue = () => {
     let selectValue = document.getElementById("qualifications").value;
     return selectValue;
 }
-
 var uploadImage = () => {
     profileImage = (document.querySelector(`input[type="file"]`).files[0]);
     const reader = new FileReader();
@@ -164,7 +159,6 @@ var uploadImage = () => {
     let profilePictureURL = document.getElementById("preview-profile").getAttribute("src");
     // preview.style.display = "block";
     return profilePictureURL;
-
 }
 //--------binding formdata in objects ------------------------
 function readFormData() {
@@ -176,7 +170,6 @@ function readFormData() {
     formData["gender"] = genderValue();
     formData["qualifications"] = getSelectValue();
     formData["profile"] = uploadImage();
-
     return formData;
 }
 
@@ -219,7 +212,7 @@ function recordInTheTable() {
 
     });
     addDataToTable.innerHTML = html;
-
+    
 }
 $(document).ready(function () {
     $('.user-table').DataTable()
@@ -239,8 +232,6 @@ function validationMessages() {
     usernameMsg.style.display = "none";
 }
 
-
-
 //---------------clearing all input fields-----------------------
 
 function resetForm() {
@@ -252,21 +243,15 @@ function resetForm() {
     qualifications.value = 'select';
     validationMessages();
     emailAlert.style.display = "none";
-    preview.setAttribute('src', 'profile.png')
-
-
+    preview.setAttribute('src','profile.png')
 }
-
 //----------------edit button ------------------------------------
 function onEdit(index) {
     updateMsg.style.display = "none";
     successMsg.style.display = "none";
-
-
     let genderHere = document.getElementsByName("gender");
     saveIndex.value = index;
     userData = JSON.parse(localStorage.getItem('userdata'));
-
     username.value = userData[index].username;
     email.value = userData[index].email;
     mobileno.value = userData[index].mobileno;
@@ -371,9 +356,7 @@ function onView(index) {
         <td>${userData[index].qualifications}</td>
     </tr>
     </table>
-
     `
     popupContent.innerHTML = viewHtml;
     recordInTheTable();
-
 }

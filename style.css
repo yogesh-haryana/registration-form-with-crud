@@ -165,11 +165,10 @@ form .valid-msg {
     color: green;
 }
 .table-div{
-    margin-top: 12px;
+    margin-top: 20px;
     display: flex;
     justify-content: center;
     height: 100vh;
-    align-items: center;
     
 }
 .table-container{
