@@ -7,7 +7,7 @@ function openTab(event, buttonName) {
     }
     tablinks = document.getElementsByClassName("tablinks");
     for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace("active", "");
+        tablinks[i].className = tablinks[i].className.replace("active", " ");
     }
     document.getElementById(buttonName).style.display = "block";
     // event.target.className += " active";
@@ -28,7 +28,7 @@ const updateMsg = document.getElementById("updatemsg");
 const saveIndex = document.getElementById("saveIndex");
 const submitbtn = document.getElementById("submitbtn");
 const updatebtn = document.getElementById("updatebtn");
-const preview = document.getElementById("preview");
+const preview = document.getElementById("preview-profile");
 const mobileNan = document.getElementById("mobileNan");
 const popupContent = document.getElementsByClassName("content")[0];
 
@@ -45,6 +45,7 @@ function onFormSubmit(event) {
     if (Validate() === true) {
         let emailValidIndex = isEmailValid();
         if (emailValidIndex === false) {
+
             formData = readFormData();
             saveToLocalStorage();
             recordInTheTable();
@@ -56,6 +57,7 @@ function onFormSubmit(event) {
         }
         else {
             emailAlert.style.display = "block";
+            validationMessages();
         }
 
     }
@@ -156,11 +158,11 @@ var uploadImage = () => {
     profileImage = (document.querySelector(`input[type="file"]`).files[0]);
     const reader = new FileReader();
     reader.addEventListener('load', function () {
-        document.getElementById("preview").setAttribute("src", this.result);
+        document.getElementById("preview-profile").setAttribute("src", this.result);
     });
     reader.readAsDataURL(profileImage);
-    let profilePictureURL = document.getElementById("preview").getAttribute("src");
-    preview.style.display = "block";
+    let profilePictureURL = document.getElementById("preview-profile").getAttribute("src");
+    // preview.style.display = "block";
     return profilePictureURL;
 
 }
@@ -217,10 +219,26 @@ function recordInTheTable() {
 
     });
     addDataToTable.innerHTML = html;
-    $(document).ready(function () {
-        $('#user-table').DataTable()
-    });
+
 }
+$(document).ready(function () {
+    $('.user-table').DataTable()
+});
+
+function validationMessages() {
+
+    successMsg.style.display = "none";
+    updateMsg.style.display = "none";
+    profileMsg.style.display = "none";
+    genderMsg.style.display = "none";
+    qualificationsMsg.style.display = "none";
+    mobileMsg.style.display = "none";
+    mobileNan.style.display = "none";
+    dobMsg.style.display = "none";
+    emailMsg.style.display = "none";
+    usernameMsg.style.display = "none";
+}
+
 
 
 //---------------clearing all input fields-----------------------
@@ -232,23 +250,12 @@ function resetForm() {
     dob.value = "";
     genderValueReset();
     qualifications.value = 'select';
-    profile.value = null;
+    validationMessages();
     emailAlert.style.display = "none";
-    successMsg.style.display = "none";
-    updateMsg.style.display = "none";
-    profileMsg.style.display = "none";
-    genderMsg.style.display = "none";
-    qualificationsMsg.style.display = "none";
-    mobileMsg.style.display = "none";
-    mobileNan.style.display = "none";
-    dobMsg.style.display = "none";
-    emailMsg.style.display = "none";
-    usernameMsg.style.display = "none";
-    preview.style.display = "none";
+    preview.setAttribute('src', 'profile.png')
 
 
 }
-
 
 //----------------edit button ------------------------------------
 function onEdit(index) {
@@ -270,12 +277,11 @@ function onEdit(index) {
             break;
         }
     }
-
     qualifications.value = userData[index].qualifications;
     preview.setAttribute("src", userData[index].profile);
     preview.style.display = "block";
     submitbtn.style.display = "none";
-    updatebtn.style.display = "block";
+    updatebtn.style.display = "inline-block";
     openTab(event, 'Registration');
 
 }
@@ -287,7 +293,6 @@ function updateRecord() {
     let genderHere = document.getElementsByName("gender");
     userData = JSON.parse(localStorage.getItem('userdata'));
     let savedIndex = document.getElementById("saveIndex").value;
-
     userData[savedIndex].username = username.value;
     userData[savedIndex].email = email.value;
     userData[savedIndex].mobileno = mobileno.value;
@@ -303,7 +308,7 @@ function updateRecord() {
     localStorage.setItem('userdata', JSON.stringify(userData));
     recordInTheTable();
     resetForm();
-    submitbtn.style.display = "block";
+    submitbtn.style.display = "inline-block";
     updatebtn.style.display = "none";
     updateMsg.style.display = "block";
 
@@ -339,37 +344,35 @@ function onView(index) {
     let showURL = userData[index].profile;
 
     let viewHtml = '';
-    viewHtml += `<table id="view-table">
+    viewHtml += `<div class="dp-holder"><img src="${showURL}" id ="user-dp"></div>
+    <table id="view-table">
     <tr>
-    <td><img src="${showURL}" id ="user-dp"></td>
-</tr>
-<tr>
-    <td>UserName : </td>
-    <td>${userData[index].username}</td>
-</tr>
-<tr>
-    <td>Email : </td>
-    <td>${userData[index].email}</td>
-</tr>
-<tr>
-    <td>Mobile Number : </td>
-    <td>${userData[index].mobileno}</td>
-</tr>
-<tr>
-    <td>Date Of birth : </td>
-    <td>${userData[index].dob}</td>
-</tr>
-<tr>
-    <td>Gender : </td>
-    <td>${userData[index].gender}</td>
-</tr>
-<tr>
-    <td>Highest Qualifications : </td>
-    <td>${userData[index].qualifications}</td>
-</tr>
-</table>
+        <td>UserName : </td>
+        <td>${userData[index].username}</td>
+    </tr>
+    <tr>
+        <td>Email : </td>
+        <td>${userData[index].email}</td>
+    </tr>
+    <tr>
+        <td>Mobile Number : </td>
+        <td>${userData[index].mobileno}</td>
+    </tr>
+    <tr>
+        <td>Date Of birth : </td>
+        <td>${userData[index].dob}</td>
+    </tr>
+    <tr>
+        <td>Gender : </td>
+        <td>${userData[index].gender}</td>
+    </tr>
+    <tr>
+        <td>Highest Qualifications : </td>
+        <td>${userData[index].qualifications}</td>
+    </tr>
+    </table>
 
-`
+    `
     popupContent.innerHTML = viewHtml;
     recordInTheTable();
 

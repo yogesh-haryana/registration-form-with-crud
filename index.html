@@ -7,6 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
@@ -16,111 +19,141 @@
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
     <link rel="stylesheet" href="style.css">
-    
+
 </head>
 
 <body>
-    <header>
-        <div class="tab">
-            <button class="tablinks" onclick="openTab(event,'Registration')">Registration</button>
-            <button class="tablinks" onclick="openTab(event,'User-List')">User-List</button>
-    </header>
 
-    <div id='Registration' class="tabcontent">
-        <form name="studentForm" class="form">
-            <span id="successmsg" style="display: none;">User details has successfully submitted.</span>
-            <span id="updatemsg" style="display: none;">User details has successfully updated.</span>
-
-            <h1>Registration</h1>
-            <input type="hidden" id="saveIndex">
-
-            <div class="form-field">
-                <label for="username">Username:</label>
-                <input type="text" name="username" id="username" placeholder="eg : Ritesh Garg" autocomplete="off">
-                <span id="usernameMsg">Please enter username*</span>
-            </div>
-
-            <div class="form-field">
-                <label for="email">Email:</label>
-                <input type="email" name="email" id="email" placeholder="eg : mail@example.com" autocomplete="off">
-                <span id="emailMsg">Please enter an Email*</span>
-                <span id="emailalert" style="display:none;">User with this email is already registered, Please use
-                    another</span>
-            </div>
-
-            <div class="form-field">
-                <label for="mobileno">Mobile Number:</label>
-                <input type="tel" name="mobileno" id="mobileno" maxlength="10" placeholder="eg : 8887788877"
-                    autocomplete="off">
-                <span id="mobileMsg">Please enter a mobile number*</span>
-                <span id="mobileNan" style="display:none">Mobile Number accepts only Numeric Values.</span>
-            </div>
-
-
-            <div class="form-field">
-                <label for="dob">Date Of Birth: </label>
-                <input type="text" name="dob" id="dob" placeholder="dd/mm/yyyy">
-                <span id="dobMsg">Please enter your date of birth*</span>
-            </div>
-            <div class="form-field">
-                <label for="gender">Gender:</label>
-                <label for="male">Male</label><input type="radio" value="male" name="gender" onchange="genderValue();"
-                    id="male">
-                <label for="female">Female</label><input type="radio" value="female" name="gender"
-                    onchange="genderValue();" id="female">
-                <span id="genderMsg">Please select your gender*</span>
-            </div>
-            <div class="form-field">
-                <label for="qualifications">Highest Qualifications:</label>
-                <select name="qualifications" id="qualifications">
-                    <option value="select" id="select">Select</option>
-                    <option value="10th">10th</option>
-                    <option value="12th">12th</option>
-                    <option value="Graduation">Graduation</option>
-                    <option value="Post Graduation">Post Graduation</option>
-                </select>
-                <span id="qualificationsMsg">Please select your highest Qualifications*</span>
-            </div>
-            <div class="form-field">
-                <label for="profile">Upload Your Profile: </label>
-                <input type="file" id="profile" accept="image/*" onchange="uploadImage();">
-                <img src="" alt="preview" id="preview" style="display:none; height: 170px; width: 150px;">
-                <span id="profileMsg">Please upload a profile picture*</span>
-            </div>
-
-            <div class="form-field">
-                <input type="reset" id="resetbtn" onclick="resetForm()">
-                <input type="submit" id="submitbtn" onclick="onFormSubmit(event)">
-                <button id="updatebtn" style="display:none ;" onclick="updateRecord()">Update</button>
-
-            </div>
-        </form>
-    </div>
-    </div>
-    <div id='User-List' class="tabcontent">
-        <div id="table-div">
-            <table id="user-table">
-                <thead>
-                    <tr>
-                        <td>S. No.</td>
-                        <td>UserName</td>
-                        <td>Email</td>
-                        <td>Action</td>
-                    </tr>
-                </thead>
-                <tbody id="user-table-body">
-                </tbody>
-            </table>
-            <span id="delete-success" style="display: none;">Details Deleted Successfully.</span>
+    <div class="tab">
+        <div class="tab-container">
+            <button class="tablinks reg-btn" onclick="openTab(event,'Registration')">Registration</button>
+            <button class="tablinks" onclick="openTab(event,'List')">List</button>
         </div>
 
+        <div id="Registration" class="tabcontent">
+            <div class="page-container">
+                <div class="container">
+                    <span class="title">Registration</span>
+                    <span id="successmsg" style="display: none;">User details has successfully submitted.</span>
+                    <span id="updatemsg" style="display: none;">User details has successfully updated.</span>
+                    <form name="studentForm" class="form">
+                        <div class="user-details">
 
-        <div id="modal" class="overlay">
-            <div class="popup">
-                <a href="#" id="close">×</a>
-                <div class="content">
-                    <!-- popup content will inject here -->
+
+
+                            <input type="hidden" id="saveIndex">
+
+                            <div class="form-field">
+                                <label for="username">Username:</label>
+                                <input type="text" name="username" id="username" placeholder="eg : Ritesh Garg"
+                                    autocomplete="off">
+                                <span id="usernameMsg" class="valid-msg">Please enter username*</span>
+                            </div>
+
+                            <div class="form-field">
+                                <label for="email">Email:</label>
+                                <input type="email" name="email" id="email" placeholder="eg : mail@example.com"
+                                    autocomplete="off">
+                                <span id="emailMsg" class="valid-msg">Please enter an Email*</span>
+                                <span id="emailalert" style="display:none; color: red;">User with this email is already registered,
+                                    Please
+                                    use
+                                    another</span>
+                            </div>
+
+                            <div class="form-field">
+                                <label for="mobileno">Mobile Number:</label>
+                                <input type="tel" name="mobileno" id="mobileno" maxlength="10"
+                                    placeholder="eg : 8887788877" autocomplete="off">
+                                <span id="mobileMsg" class="valid-msg">Please enter a mobile number*</span>
+                                <span id="mobileNan" style="display:none">Mobile Number accepts only Numeric
+                                    Values.</span>
+                            </div>
+
+
+                            <div class="form-field">
+                                <label for="dob">Date Of Birth: </label>
+                                <input type="text" name="dob" id="dob" placeholder="dd/mm/yyyy">
+                                <span id="dobMsg" class="valid-msg">Please enter your date of birth*</span>
+                            </div>
+                            <div class="form-field">
+                                <div class="gender-class">
+                                    <p for="gender">Gender:</p>
+                                    <br>
+                                    <label for="male">Male </label><input type="radio" value="male" name="gender"
+                                        onchange="genderValue();" id="male">
+                                    <label for="female">Female </label><input type="radio" value="female" name="gender"
+                                        onchange="genderValue();" id="female">
+                                    <span id="genderMsg" class="valid-msg">Please select your gender*</span>
+                                </div>
+                            </div>
+                            <div class="form-field">
+                                <label for="qualifications">Highest Qualifications:</label>
+                                <select name="qualifications" id="qualifications">
+                                    <option value="select" id="select">Select</option>
+                                    <option value="10th">10th</option>
+                                    <option value="12th">12th</option>
+                                    <option value="Graduation">Graduation</option>
+                                    <option value="Post Graduation">Post Graduation</option>
+                                </select>
+                                <span id="qualificationsMsg" class="valid-msg">Please select your highest
+                                    Qualifications*</span>
+                            </div>
+                            <div class="form-field">
+                                <label for="profile">Upload Your Profile: </label>
+                                <input type="file" id="profile" accept="image/*" onchange="uploadImage();">
+                                <span id="profileMsg" class="valid-msg">Please upload a profile picture*</span>
+                            </div>
+                            <div class="form-field">
+                                <br>
+                                <div class="preview">
+                                    <img src="profile.png" alt="preview" id="preview-profile"
+                                        style="height: 100px; width: 90px;">
+                                </div>
+
+                            </div>
+
+                            <div class=" form-button-container">
+                                <button type="reset" id="resetbtn" onclick="resetForm()">Reset</button>
+                                <button type="submit" id="submitbtn" class="stylebtn" style="display: inline-block;" onclick="onFormSubmit(event)">Submit</button>
+                                <button id="updatebtn" class="stylebtn" style="display: none;" onclick="updateRecord()">Update</button>
+
+                            </div>
+                        </div>
+                    </form>
                 </div>
+            </div>
+        </div>
+
+        <div id='List' class="tabcontent">
+            <div class="table-div">
+                <div class="table-container">
+                    <div class="titlelist">List</div>
+                    <table class="user-table">
+                        <thead>
+                            <tr>
+                                <td>S. No.</td>
+                                <td>UserName</td>
+                                <td>Email</td>
+                                <td>Action</td>
+                            </tr>
+                        </thead>
+                        <tbody id="user-table-body">
+                        </tbody>
+                    </table>
+                    <span id="delete-success" style="display: none;">Details Deleted Successfully.</span>
+                </div>
+            </div>
+
+
+            <div id="modal" class="overlay">
+                <div class="popup">
+                    <a href="#" id="close">×</a>
+                    <div class="content">
+                        <!-- popup content will inject here -->
+                    </div>
+                </div>
+
             </div>
 
         </div>

@@ -1,14 +1,80 @@
-body {
-    background-color: #FFF6BF;
-    font-size: 1.5rem;
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Merriweather', serif;
 }
-.tab {
-    overflow: hidden;
+
+.page-container {
+    margin-top: 75px;
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    align-items: center;
+}
+.container{
+    max-width: 700px;
+    width: 100%;
+    padding: 19px 30px;
+    border-radius: 5px;
     border: 1px solid #ccc;
-    background-color: #f1f1f1;
+
 }
-.tab button {
+.container .title{
+    font-size: 25px;
+    font-weight: 500;
+}
+form .user-details{
+    display: flex;
+    flex-wrap: wrap;
+}
+form .user-details .form-field{
+    margin: 20px 0 12px 0 ;
+    width: calc(100% /2 - 20px);
+    justify-content: space-between;
+}
+form .user-details .form-field input, select {
+    height: 35px;
+    width: 90%;
+    outline: none;
+    border: 1px solid #ccc;
+    padding-left: 15px;
+    font-size: 15px;
+    border-bottom-width:2px ;
+    border-radius: 6px;
+
+}
+form .user-details .form-field label {
+    display: block;
+    font-weight: 500;
+    margin: 5px 2px 5px;
+}
+form .user-details .form-field input:focus,select:focus{
+    border-color: #5a71e4;
+}
+
+.tab-container {
+    z-index: 1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    background-color: #98A8F8;
+    align-items: center;
+}
+.reg-btn{
+    margin-left: 20%;
+}
+.tablinks{
+    align-items: center;
+
+}
+
+.tab-container button {
+    color: #fff;
     background-color: inherit;
+    height: 100%;
     float: left;
     border: none;
     outline: none;
@@ -17,117 +83,134 @@ body {
     transition: 0.3s;
     font-size: 17px;
 }
-.tab button:hover {
-    background-color: #ddd;
+
+.tab-container button:hover {
+    background-color: #425F57;
 }
-.tab button.active {
+
+.tab-container button.active {
     background-color: #ccc;
 }
+
 .tabcontent {
     display: none;
     padding: 6px 12px;
 }
-
-
-.form-buttons {
-    margin-top: 20px;
-    width: 75px;
-    height: 25px;
+form .form-field .gender-class input {
+    width: 16px;
+    height: 16px;
+    display: inline;
+}
+form .form-field .gender-class label {
+    display: inline;
+}
+#preview-profile{
+    height: 100px;
+    width: 90px;
+    border: 1px solid #ddd;
+    border-radius: 45%;
+}
+.form-button-container{
+    margin-left: 60%;
 }
 
-#Registration {
-    margin: 0 220px;
-}
-
-label {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 4px 0;
-    display: block;
-}
-
-input {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 4px 0;
-    display: block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-
-[type=text],
-select {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
+#resetbtn {
+    width:80px;
     display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-
-input[type=submit],
-[type=reset] {
-    width: 49%;
-    display: inline-block;
-    background-color: #4CAF50;
+    background-color: #686e69;
     color: white;
-    padding: 14px 20px;
-    margin-top: 40px;
+    padding: 10px 12px;
+    margin-top: 30px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
 
 }
+.stylebtn {
+    width: 80px;
+    background-color: #0000FF;
+    color: white;
+    padding: 10px 12px;
+    margin-top: 30px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
 
-input :not(#submitbtn):focus {
-    background-color: rgb(224, 243, 252);
+}
+#updatebtn {
+    background-color: #0ba448;
 }
 
-input[type=submit]:hover {
-    background-color: #0a600f;
-}
 
-input[type=reset]:hover {
-    background-color: #fa850f;
-}
-
-form span {
+form .valid-msg {
     color: red;
     display: none;
 }
 
 #user-dp {
-    align-items: center;
     height: 200px;
     width: 180px;
 }
- 
+.dp-holder{
+    text-align: center;
+
+}
+
 #view-table {
     margin: 30px auto 0 auto;
 }
-
-
 #successmsg,
 #updatemsg,
 #delete-success {
     color: green;
 }
-
-#updatebtn {
-    width: 48%;
-    display: inline-block;
-    background-color: #4CAF50;
-    color: white;
-    padding: 14px 20px;
-    margin-top: 40px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+.table-div{
+    margin-top: 12px;
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    align-items: center;
+    
 }
-#user-table{
-    width: 80vw;
+.table-container{
+    max-width: 850px;
+    width: 100%;
+    padding: 19px 10px; 
+    border-radius: 5px;
+    border: 1px solid #ccc;
+
+}
+.titlelist{
+    font-size: 25px;
+    font-weight: 500;
+    margin: 0 0 20px 20px;
+}
+.dataTable{
+    width: 100%;
+    min-width: 800px;
+}
+.dataTables_length  label{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.dataTables_length  label select{
+    min-width: 120px;
+    max-height: 29px;
+}
+.user-table, .user-table th, .user-table td {
+    border: 1px solid;
+}
+
+.user-table{
+    margin-top: 30px;
+    border-collapse: collapse;
+}
+.user-table tr:nth-child(odd) {
+    background-color: rgb(247, 224, 204);
+}
+.user-table tr:nth-child(even) {
+    background-color: rgb(237, 244, 249);
 }
 
 td a {
@@ -144,7 +227,8 @@ td a:hover {
 td a:active {
     color: blue;
 }
-.overlay{
+
+.overlay {
     position: fixed;
     top: 0;
     bottom: 0;
@@ -154,14 +238,14 @@ td a:active {
     transition: opacity 500ms;
     visibility: hidden;
     opacity: 0;
-
-
 }
-.overlay:target{
-visibility: visible;
-opacity: 1;
+
+.overlay:target {
+    visibility: visible;
+    opacity: 1;
 }
-.popup{
+
+.popup {
     margin: 70px auto;
     padding: 20px;
     background: whitesmoke;
@@ -170,7 +254,7 @@ opacity: 1;
     position: relative;
     transition: all 5s ease-in-out;
 }
-#close{
+#close {
     position: absolute;
     top: 20px;
     right: 30px;
@@ -180,11 +264,12 @@ opacity: 1;
     text-decoration: none;
 
 }
-#close:hover{
+#close:hover {
     color: red;
 
 }
-.popup.content{
+
+.popup.content {
     max-height: 45%;
     overflow: auto;
 }
