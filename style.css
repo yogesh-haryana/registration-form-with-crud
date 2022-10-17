@@ -59,12 +59,13 @@ form .user-details .form-field input:focus,select:focus{
     top: 0;
     left: 0;
     width: 100%;
-    height: 40px;
+    height: 35px;
     background-color: #98A8F8;
     align-items: center;
+
 }
 .reg-btn{
-    margin-left: 20%;
+    margin-left: 19%;
 }
 .tablinks{
     align-items: center;
@@ -82,6 +83,9 @@ form .user-details .form-field input:focus,select:focus{
     padding: 14px 16px;
     transition: 0.3s;
     font-size: 17px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
 }
 
 .tab-container button:hover {
@@ -165,7 +169,7 @@ form .valid-msg {
     color: green;
 }
 .table-div{
-    margin-top: 20px;
+    margin-top: 51px;
     display: flex;
     justify-content: center;
     height: 100vh;
@@ -188,6 +192,10 @@ form .valid-msg {
     width: 100%;
     min-width: 800px;
 }
+.dataTables_length{
+    margin: 0 20px;
+    padding-bottom: 10px;
+}
 .dataTables_length  label{
     display: flex;
     flex-direction: row;
@@ -196,6 +204,8 @@ form .valid-msg {
 .dataTables_length  label select{
     min-width: 120px;
     max-height: 29px;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 .user-table, .user-table th, .user-table td {
     border: 1px solid;
@@ -210,6 +220,9 @@ form .valid-msg {
 }
 .user-table tr:nth-child(even) {
     background-color: rgb(237, 244, 249);
+}
+table.dataTable thead th, table.dataTable thead td{
+    background: burlywood;
 }
 
 td a {
