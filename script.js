@@ -43,10 +43,8 @@ let gender = document.studentForm.gender;
 let qualifications = document.studentForm.qualifications;
 let profile = document.studentForm.profile;
 
-
 function onFormSubmit(event) {
     event.preventDefault();
-
     if (formValidation() === true) {
         formData = readFormData();
         saveToLocalStorage();
@@ -55,9 +53,6 @@ function onFormSubmit(event) {
         successMsg.style.display = "block";
         updateMsg.style.display = "none";
         mobileNan.style.display = "none";
-    }
-    else {
-        // validationMessages();
     }
     event.preventDefault();
 }
@@ -264,7 +259,6 @@ var uploadImage = () => {
         previewdiv.style.display = "none";
         profilePictureURL = null;
         return profilePictureURL;
-
     }
 }
 //--------binding formdata in objects ------------------------
@@ -377,7 +371,6 @@ function onEdit(index) {
     submitbtn.style.display = "none";
     updatebtn.style.display = "inline-block";
     openTab(event, 'Registration');
-
 }
 
 //--------------------updating data--------------------------
@@ -407,8 +400,6 @@ function updateRecord() {
     updatebtn.style.display = "none";
     updateMsg.style.display = "block";
     previewdiv.style.display = "none";
-
-
 }
 
 //-----------------------delete button------------------------

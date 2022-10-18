@@ -21,15 +21,12 @@
     <link rel="stylesheet" href="style.css">
 
 </head>
-
 <body>
-
     <div class="tab">
         <div class="tab-container">
             <button class="tablinks reg-btn" onclick="openTab(event,'Registration')">Registration</button>
             <button class="tablinks" onclick="openTab(event,'List')">List</button>
         </div>
-
         <div id="Registration" class="tabcontent">
             <div class="page-container">
                 <div class="container">
@@ -39,14 +36,12 @@
                     <form name="studentForm" class="form">
                         <div class="user-details">
                             <input type="hidden" id="saveIndex">
-
                             <div class="form-field">
                                 <label for="username">Username:</label>
                                 <input type="text" name="username" id="username"onchange="usernameValidation()" placeholder="eg : Ritesh Garg"
                                     autocomplete="off">
                                 <span id="usernameMsg" class="valid-msg">Please enter username*</span>
                             </div>
-
                             <div class="form-field">
                                 <label for="email">Email:</label>
                                 <input type="text" name="email" id="email" placeholder="eg : mail@example.com"
@@ -57,7 +52,6 @@
                                 <span id="emailFormat" style="display: none;color:red">"You have entered an Invalid
                                     email address!"</span>
                             </div>
-
                             <div class="form-field">
                                 <label for="mobileno">Mobile Number:</label>
                                 <input type="tel" onchange="mobileValidation()" name="mobileno" id="mobileno" maxlength="10"
@@ -66,10 +60,7 @@
                                 <span id="mobileNan" style="display:none ;color: red;">Mobile Number accepts only Numeric
                                     Values.</span>
                                 <span id="mobilelengthmsg" class="valid-msg" style="display:none ;color: red;">Mobile number is too short*</span>
-
                             </div>
-
-
                             <div class="form-field">
                                 <label for="dob">Date Of Birth: </label>
                                 <input type="text" onchange="dobValidation()" name="dob" id="dob" placeholder="dd/mm/yyyy">
@@ -117,14 +108,12 @@
                                 <button type="submit" id="submitbtn" onclick="onFormSubmit(event)" class="stylebtn" style="display: inline-block;">Submit</button>
                                 <button id="updatebtn" class="stylebtn" style="display: none;"
                                     onclick="updateRecord()">Update</button>
-
                             </div>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
-
         <div id='List' class="tabcontent">
             <div class="table-div">
                 <div class="table-container">
@@ -144,8 +133,6 @@
                     <span id="delete-success" style="display: none;">Details Deleted Successfully.</span>
                 </div>
             </div>
-
-
             <div id="modal" class="overlay">
                 <div class="popup">
                     <a href="#" id="close">×</a>
@@ -153,13 +140,9 @@
                         <!-- popup content will inject here -->
                     </div>
                 </div>
-
             </div>
-
         </div>
     </div>
-
     <script src="script.js"></script>
 </body>
-
 </html>
