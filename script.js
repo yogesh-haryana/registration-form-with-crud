@@ -16,6 +16,7 @@ openTab(event, 'Registration');
 const deleteMsg = document.getElementById("delete-success");
 const usernameMsg = document.getElementById("usernameMsg");
 const emailMsg = document.getElementById("emailMsg");
+const emailFormatMsg = document.getElementById("emailFormat");
 const mobileMsg = document.getElementById("mobileMsg");
 const dobMsg = document.getElementById("dobMsg");
 const genderMsg = document.getElementById("genderMsg");
@@ -27,8 +28,10 @@ const updateMsg = document.getElementById("updatemsg");
 const saveIndex = document.getElementById("saveIndex");
 const submitbtn = document.getElementById("submitbtn");
 const updatebtn = document.getElementById("updatebtn");
-const preview = document.getElementById("preview-profile");
+const previewprofile = document.getElementById("preview-profile");
+const previewdiv = document.getElementById("preview-div")
 const mobileNan = document.getElementById("mobileNan");
+const mobilelengthmsg = document.getElementById("mobilelengthmsg");
 const popupContent = document.getElementsByClassName("content")[0];
 const userdp = document.getElementById("user-dp")
 
@@ -40,74 +43,170 @@ let gender = document.studentForm.gender;
 let qualifications = document.studentForm.qualifications;
 let profile = document.studentForm.profile;
 
-function onFormSubmit(event) {
 
-    if (Validate() === true) {
-        let emailValidIndex = isEmailValid();
-        if (emailValidIndex === false) {
-            formData = readFormData();
-            saveToLocalStorage();
-            recordInTheTable();
-            resetForm();
-            successMsg.style.display = "block";
-            updateMsg.style.display = "none";
-            mobileNan.style.display = "none";
-        }
-        else {
-            emailAlert.style.display = "block";
-            validationMessages();
-        }
+function onFormSubmit(event) {
+    event.preventDefault();
+
+    if (formValidation() === true) {
+        formData = readFormData();
+        saveToLocalStorage();
+        recordInTheTable();
+        resetForm();
+        successMsg.style.display = "block";
+        updateMsg.style.display = "none";
+        mobileNan.style.display = "none";
+    }
+    else {
+        // validationMessages();
     }
     event.preventDefault();
 }
+
 // --------------------form validation---------------------
-function Validate() {
-    let validationStatus = true;
+function formValidation() {
+    let validationstatus = true
+    if (usernameValidation() === false) {
+        validationstatus = false
+    }
+    if (EmailFunction() === false) {
+        validationstatus = false
+    }
+    if (isEmailValid() === false) {
+        validationstatus = false
+    }
+    if (mobileValidation() === false) {
+        validationstatus = false
+    }
+    if (genderValidation() === false) {
+        validationstatus = false
+    }
+    if (dobValidation() === false) {
+        validationstatus = false
+    }
+    if (qualificationValidation() === false) {
+        validationstatus = false
+    }
+    if (imageValidation() === false) {
+        uploadImage();
+        validationstatus = false
+    }
+    return validationstatus
+}
+
+function usernameValidation() {
     if (username.value === "") {
         usernameMsg.style.display = "block";
-        validationStatus = false;
+        return false;
     }
+    else {
+        usernameMsg.style.display = "none";
+        return true;
+    }
+}
+function EmailFunction() {
+    var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     if (email.value === "") {
         emailMsg.style.display = "block";
-        validationStatus = false;
+        emailFormatMsg.style.display = "none";
+        emailAlert.style.display = "none";
+        return false;
     }
+    else if (isEmailValid() === false) {
+        emailAlert.style.display = "block";
+        emailFormatMsg.style.display = "none";
+        emailMsg.style.display = "none";
+        return false;
+    }
+    else if (!email.value.match(mailformat)) {
+        emailAlert.style.display = "none";
+        emailFormatMsg.style.display = "block";
+        emailMsg.style.display = "none";
+
+        return false;
+    }
+    else {
+        emailAlert.style.display = "none";
+        emailMsg.style.display = "none";
+        emailFormatMsg.style.display = "none";
+        return true;
+    }
+}
+function mobileValidation() {
     if (mobileno.value === "") {
         mobileMsg.style.display = "block";
-        validationStatus = false;
+        return false;
     }
-    if (isNaN(mobileno.value)) {
+    else if (isNaN(mobileno.value)) {
+        mobileMsg.style.display = "none";
+        mobilelengthmsg.style.display = "none"
         mobileNan.style.display = "block";
-        validationStatus = false;
+        return false;
     }
+    else if (mobileno.value.length < 10) {
+        mobilelengthmsg.style.display = "block"
+        mobileMsg.style.display = "none";
+        mobileNan.style.display = "none"
+    }
+    else {
+        mobilelengthmsg.style.display = "none"
+        mobileMsg.style.display = "none";
+        mobileNan.style.display = "none"
+    }
+
+}
+function genderValidation() {
+    if (genderValue() === null) {
+        genderMsg.style.display = "block";
+        return false;
+    }
+    else {
+        genderMsg.style.display = "none";
+        return true;
+    }
+}
+
+function dobValidation() {
     if (dob.value === "") {
         dobMsg.style.display = "block";
-        validationStatus = false;
+        return false;
     }
-    if (gender.value === "") {
-        genderMsg.style.display = "block";
-        validationStatus = false;
+    else {
+        dobMsg.style.display = "none"
+        return true;
     }
+}
+
+function qualificationValidation() {
     if (qualifications.value === "select") {
         qualificationsMsg.style.display = "block";
-        validationStatus = false;
+        return false;
     }
-    if (profile.value === "") {
-        profileMsg.style.display = "block";
-        validationStatus = false;
+    else {
+        qualificationsMsg.style.display = "none";
+        return true
     }
-    return validationStatus;
 }
-isEmailValid = () => {
+function imageValidation() {
+    if (uploadImage() === null || uploadImage() === undefined) {
+        previewdiv.style.display = "none"
+        profileMsg.style.display = "block";
+        return false;
+    }
+    else {
+        previewdiv.style.display = "block"
+        profileMsg.style.display = "none";
+        return true;
+    }
+}
+
+function isEmailValid() {
     let emailValue = document.getElementById("email").value;
-
     userData = JSON.parse(localStorage.getItem('userdata'));
-    let status = false;
-
+    let status = true;
     if (userData) {
         for (let i = 0; i < userData.length; i++) {
-
             if (emailValue === userData[i].email) {
-                status = true;
+                status = false;
             }
         }
     }
@@ -150,15 +249,23 @@ let getSelectValue = () => {
     return selectValue;
 }
 var uploadImage = () => {
-    profileImage = (document.querySelector(`input[type="file"]`).files[0]);
-    const reader = new FileReader();
-    reader.addEventListener('load', function () {
-        document.getElementById("preview-profile").setAttribute("src", this.result);
-    });
-    reader.readAsDataURL(profileImage);
-    let profilePictureURL = document.getElementById("preview-profile").getAttribute("src");
-    // preview.style.display = "block";
-    return profilePictureURL;
+    var profileImage = document.getElementById("profile").files[0];
+    if (profileImage != null && profileImage != undefined) {
+        const reader = new FileReader();
+        reader.addEventListener('load', function () {
+            previewprofile.setAttribute("src", this.result);
+        });
+        reader.readAsDataURL(profileImage);
+        let profilePictureURL = previewprofile.getAttribute("src");
+        return profilePictureURL;
+    }
+    else{
+        profileMsg.style.display = "block";
+        previewdiv.style.display = "none";
+        profilePictureURL = null;
+        return profilePictureURL;
+
+    }
 }
 //--------binding formdata in objects ------------------------
 function readFormData() {
@@ -212,14 +319,13 @@ function recordInTheTable() {
 
     });
     addDataToTable.innerHTML = html;
-    
+
 }
 $(document).ready(function () {
     $('.user-table').DataTable()
 });
 
 function validationMessages() {
-
     successMsg.style.display = "none";
     updateMsg.style.display = "none";
     profileMsg.style.display = "none";
@@ -230,6 +336,8 @@ function validationMessages() {
     dobMsg.style.display = "none";
     emailMsg.style.display = "none";
     usernameMsg.style.display = "none";
+    emailAlert.style.display = "none"
+    emailFormatMsg.style.display = "none"
 }
 
 //---------------clearing all input fields-----------------------
@@ -242,8 +350,8 @@ function resetForm() {
     genderValueReset();
     qualifications.value = 'select';
     validationMessages();
-    emailAlert.style.display = "none";
-    preview.setAttribute('src','profile.png')
+    previewprofile.value = null;
+    previewdiv.style.display = "none";
 }
 //----------------edit button ------------------------------------
 function onEdit(index) {
@@ -263,8 +371,9 @@ function onEdit(index) {
         }
     }
     qualifications.value = userData[index].qualifications;
-    preview.setAttribute("src", userData[index].profile);
-    preview.style.display = "block";
+    previewprofile.setAttribute("src", userData[index].profile);
+    previewdiv.style.display = "block";
+    previewprofile.style.display = "block";
     submitbtn.style.display = "none";
     updatebtn.style.display = "inline-block";
     openTab(event, 'Registration');
@@ -274,7 +383,7 @@ function onEdit(index) {
 //--------------------updating data--------------------------
 
 function updateRecord() {
-
+    formValidation();
     let genderHere = document.getElementsByName("gender");
     userData = JSON.parse(localStorage.getItem('userdata'));
     let savedIndex = document.getElementById("saveIndex").value;
@@ -293,9 +402,12 @@ function updateRecord() {
     localStorage.setItem('userdata', JSON.stringify(userData));
     recordInTheTable();
     resetForm();
+    validationMessages();
     submitbtn.style.display = "inline-block";
     updatebtn.style.display = "none";
     updateMsg.style.display = "block";
+    previewdiv.style.display = "none";
+
 
 }
 

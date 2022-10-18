@@ -38,42 +38,41 @@
                     <span id="updatemsg" style="display: none;">User details has successfully updated.</span>
                     <form name="studentForm" class="form">
                         <div class="user-details">
-
-
-
                             <input type="hidden" id="saveIndex">
 
                             <div class="form-field">
                                 <label for="username">Username:</label>
-                                <input type="text" name="username" id="username" placeholder="eg : Ritesh Garg"
+                                <input type="text" name="username" id="username"onchange="usernameValidation()" placeholder="eg : Ritesh Garg"
                                     autocomplete="off">
                                 <span id="usernameMsg" class="valid-msg">Please enter username*</span>
                             </div>
 
                             <div class="form-field">
                                 <label for="email">Email:</label>
-                                <input type="email" name="email" id="email" placeholder="eg : mail@example.com"
-                                    autocomplete="off">
+                                <input type="text" name="email" id="email" placeholder="eg : mail@example.com"
+                                    autocomplete="off" onchange="EmailFunction()">
                                 <span id="emailMsg" class="valid-msg">Please enter an Email*</span>
-                                <span id="emailalert" style="display:none; color: red;">User with this email is already registered,
-                                    Please
-                                    use
-                                    another</span>
+                                <span id="emailalert" style="display:none; color:red;">User with this email is already
+                                    registered, Please use another</span>
+                                <span id="emailFormat" style="display: none;color:red">"You have entered an Invalid
+                                    email address!"</span>
                             </div>
 
                             <div class="form-field">
                                 <label for="mobileno">Mobile Number:</label>
-                                <input type="tel" name="mobileno" id="mobileno" maxlength="10"
+                                <input type="tel" onchange="mobileValidation()" name="mobileno" id="mobileno" maxlength="10"
                                     placeholder="eg : 8887788877" autocomplete="off">
-                                <span id="mobileMsg" class="valid-msg">Please enter a mobile number*</span>
-                                <span id="mobileNan" style="display:none">Mobile Number accepts only Numeric
+                                <span id="mobileMsg" class="valid-msg" style="display:none ;color: red;">Please enter a mobile number*</span>
+                                <span id="mobileNan" style="display:none ;color: red;">Mobile Number accepts only Numeric
                                     Values.</span>
+                                <span id="mobilelengthmsg" class="valid-msg" style="display:none ;color: red;">Mobile number is too short*</span>
+
                             </div>
 
 
                             <div class="form-field">
                                 <label for="dob">Date Of Birth: </label>
-                                <input type="text" name="dob" id="dob" placeholder="dd/mm/yyyy">
+                                <input type="text" onchange="dobValidation()" name="dob" id="dob" placeholder="dd/mm/yyyy">
                                 <span id="dobMsg" class="valid-msg">Please enter your date of birth*</span>
                             </div>
                             <div class="form-field">
@@ -81,15 +80,15 @@
                                     <p for="gender">Gender:</p>
                                     <br>
                                     <label for="male">Male </label><input type="radio" value="male" name="gender"
-                                        onchange="genderValue();" id="male">
+                                        onchange="genderValidation();" id="male">
                                     <label for="female">Female </label><input type="radio" value="female" name="gender"
-                                        onchange="genderValue();" id="female">
+                                        onchange="genderValidation();" id="female">
                                     <span id="genderMsg" class="valid-msg">Please select your gender*</span>
                                 </div>
                             </div>
                             <div class="form-field">
                                 <label for="qualifications">Highest Qualifications:</label>
-                                <select name="qualifications" id="qualifications">
+                                <select name="qualifications" id="qualifications" onchange="qualificationValidation()">
                                     <option value="select" id="select">Select</option>
                                     <option value="10th">10th</option>
                                     <option value="12th">12th</option>
@@ -101,13 +100,13 @@
                             </div>
                             <div class="form-field">
                                 <label for="profile">Upload Your Profile: </label>
-                                <input type="file" id="profile" accept="image/*" onchange="uploadImage();">
-                                <span id="profileMsg" class="valid-msg">Please upload a profile picture*</span>
+                                <input type="file" id="profile" accept="image/*" onchange="imageValidation();">
+                                <span id="profileMsg" style="display:none" class="valid-msg">Please upload a profile picture*</span>
                             </div>
                             <div class="form-field">
                                 <br>
-                                <div class="preview">
-                                    <img src="profile.png" alt="preview" id="preview-profile"
+                                <div id="preview-div" style="display: none">
+                                    <img src="" id="preview-profile"
                                         style="height: 100px; width: 90px;">
                                 </div>
 
@@ -115,8 +114,9 @@
 
                             <div class=" form-button-container">
                                 <button type="reset" id="resetbtn" onclick="resetForm()">Reset</button>
-                                <button type="submit" id="submitbtn" class="stylebtn" style="display: inline-block;" onclick="onFormSubmit(event)">Submit</button>
-                                <button id="updatebtn" class="stylebtn" style="display: none;" onclick="updateRecord()">Update</button>
+                                <button type="submit" id="submitbtn" onclick="onFormSubmit(event)" class="stylebtn" style="display: inline-block;">Submit</button>
+                                <button id="updatebtn" class="stylebtn" style="display: none;"
+                                    onclick="updateRecord()">Update</button>
 
                             </div>
                         </div>
