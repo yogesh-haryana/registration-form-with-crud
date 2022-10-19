@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Registration Form</title>
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,14 +13,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
-
     <script type="text/javascript" charset="utf8"
         src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-
     <link rel="stylesheet" href="style.css">
 
 </head>
+
 <body>
     <div class="tab">
         <div class="tab-container">
@@ -38,32 +37,34 @@
                             <input type="hidden" id="saveIndex">
                             <div class="form-field">
                                 <label for="username">Username:</label>
-                                <input type="text" name="username" id="username"onchange="usernameValidation()" placeholder="eg : Ritesh Garg"
-                                    autocomplete="off">
+                                <input type="text" name="username" id="username" onchange="usernameValidation()"
+                                    placeholder="eg : Ritesh Garg" autocomplete="off">
                                 <span id="usernameMsg" class="valid-msg">Please enter username*</span>
+                                <span id="alphanumerciMsg" class="valid-msg">Please enter AlphaNumeric values.</span>
                             </div>
                             <div class="form-field">
                                 <label for="email">Email:</label>
                                 <input type="text" name="email" id="email" placeholder="eg : mail@example.com"
                                     autocomplete="off" onchange="EmailFunction()">
                                 <span id="emailMsg" class="valid-msg">Please enter an Email*</span>
-                                <span id="emailalert" style="display:none; color:red;">User with this email is already
+                                <span id="emailalert" class="valid-msg">User with this email is already
                                     registered, Please use another</span>
-                                <span id="emailFormat" style="display: none;color:red">"You have entered an Invalid
+                                <span id="emailFormat" class="valid-msg">"You have entered an Invalid
                                     email address!"</span>
                             </div>
                             <div class="form-field">
                                 <label for="mobileno">Mobile Number:</label>
-                                <input type="tel" onchange="mobileValidation()" name="mobileno" id="mobileno" maxlength="10"
-                                    placeholder="eg : 8887788877" autocomplete="off">
-                                <span id="mobileMsg" class="valid-msg" style="display:none ;color: red;">Please enter a mobile number*</span>
-                                <span id="mobileNan" style="display:none ;color: red;">Mobile Number accepts only Numeric
+                                <input type="tel" onchange="mobileValidation()" name="mobileno" id="mobileno"
+                                    maxlength="10" placeholder="eg : 8887788877" autocomplete="off">
+                                <span id="mobileMsg" class="valid-msg">Please enter a mobile number*</span>
+                                <span id="mobileNan" class="valid-msg">Mobile Number accepts only Numeric
                                     Values.</span>
-                                <span id="mobilelengthmsg" class="valid-msg" style="display:none ;color: red;">Mobile number is too short*</span>
+                                <span id="mobilelengthmsg" class="valid-msg">Mobile number is too short*</span>
                             </div>
                             <div class="form-field">
                                 <label for="dob">Date Of Birth: </label>
-                                <input type="text" onchange="dobValidation()" name="dob" id="dob" placeholder="dd/mm/yyyy">
+                                <input type="text" onchange="dobValidation()" name="dob" id="dob"
+                                    placeholder="dd/mm/yyyy">
                                 <span id="dobMsg" class="valid-msg">Please enter your date of birth*</span>
                             </div>
                             <div class="form-field">
@@ -92,20 +93,19 @@
                             <div class="form-field">
                                 <label for="profile">Upload Your Profile: </label>
                                 <input type="file" id="profile" accept="image/*" onchange="imageValidation();">
-                                <span id="profileMsg" style="display:none" class="valid-msg">Please upload a profile picture*</span>
+                                <span id="profileMsg" style="display:none" class="valid-msg">Please upload a profile
+                                    picture*</span>
                             </div>
                             <div class="form-field">
                                 <br>
                                 <div id="preview-div" style="display: none">
-                                    <img src="" id="preview-profile"
-                                        style="height: 100px; width: 90px;">
+                                    <img src="" id="preview-profile" style="height: 100px; width: 90px;">
                                 </div>
-
                             </div>
-
                             <div class=" form-button-container">
                                 <button type="reset" id="resetbtn" onclick="resetForm()">Reset</button>
-                                <button type="submit" id="submitbtn" onclick="onFormSubmit(event)" class="stylebtn" style="display: inline-block;">Submit</button>
+                                <button type="submit" id="submitbtn" onclick="onFormSubmit(event)" class="stylebtn"
+                                    style="display: inline-block;">Submit</button>
                                 <button id="updatebtn" class="stylebtn" style="display: none;"
                                     onclick="updateRecord()">Update</button>
                             </div>
@@ -145,4 +145,5 @@
     </div>
     <script src="script.js"></script>
 </body>
+
 </html>
