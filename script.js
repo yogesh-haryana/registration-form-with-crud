@@ -60,38 +60,49 @@ function onFormSubmit(event) {
 }
 
 // --------------------form validation---------------------
+
 function formValidation() {
-    let validationstatus;
-    if (usernameValidation() === false) {
-        validationstatus = false;
-    }
-    else if (EmailFunction() === false) {
-        validationstatus = false
-    }
-    else if (isEmailValid() === false) {
-        validationstatus = false;
-    }
-    else if (mobileValidation() === false) {
-        validationstatus = false;
-    }
-    else if (genderValidation() === false) {
-        validationstatus = false;
-    }
-    else if (dobValidation() === false) {
-        validationstatus = false;
-    }
-    else if (qualificationValidation() === false) {
-        validationstatus = false;
-    }
-    else if (imageValidation() === false) {
-        uploadImage();
-        validationstatus = false;
-    }
-    else {
-        validationstatus = true;
+    let validationstatus = true;
+    switch (true) {
+        case (usernameValidation() === false):
+            validationstatus = false;
+            break;
+
+        case (EmailFunction() === false):
+            validationstatus = false;
+            break;
+
+        case (isEmailValid() === false):
+            validationstatus = false;
+            break;
+
+        case (mobileValidation() === false):
+            validationstatus = false;
+            break;
+
+        case (genderValidation() === false):
+            validationstatus = false;
+            break;
+
+        case (dobValidation() === false):
+            validationstatus = false;
+            break;
+
+        case (qualificationValidation() === false):
+            validationstatus = false;
+            break;
+
+        case (imageValidation() === false):
+            uploadImage();
+            validationstatus = false;
+            break;
+
+        default:
+            validationstatus = true;
+            break;
     }
     return validationstatus;
-};
+}
 
 const usernameValidationMsgReset = () => {
     usernameMsg.style.display = "none";
@@ -174,7 +185,7 @@ function genderValidation() {
         genderMsg.style.display = "block";
         return false;
     }
-    if (gender[0].checked == true || gender[1].checked == true) {
+    if (gender[0].checked === true || gender[1].checked === true) {
         genderMsg.style.display = "none";
         return true;
     }
