@@ -93,72 +93,80 @@ function formValidation() {
     return validationstatus;
 };
 
+const usernameValidationMsgReset = () => {
+    usernameMsg.style.display = "none";
+    alphanumerciMsg.style.display = "none";
+}
+
+const emailValidationMsgReset = () => {
+    emailAlert.style.display = "none";
+    emailMsg.style.display = "none";
+    emailFormatMsg.style.display = "none";
+}
+
+const mobileValidationMsgReset = () => {
+    mobilelengthmsg.style.display = "none";
+    mobileMsg.style.display = "none";
+    mobileNan.style.display = "none";
+};
+
 function usernameValidation() {
     if (username.value === "") {
+        usernameValidationMsgReset();
         usernameMsg.style.display = "block";
-        alphanumerciMsg.style.display = "none";
         return false;
     }
     else if (/[^a-zA-Z0-9\-\/]/.test(username.value)) {
+        usernameValidationMsgReset();
         alphanumerciMsg.style.display = "block";
-        usernameMsg.style.display = "none";
         return false;
     }
     else {
-        usernameMsg.style.display = "none";
-        alphanumerciMsg.style.display = "none";
+        usernameValidationMsgReset();
         return true;
     }
 }
 function EmailFunction() {
     var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     if (email.value === "") {
+        emailValidationMsgReset();
         emailMsg.style.display = "block";
-        emailFormatMsg.style.display = "none";
-        emailAlert.style.display = "none";
         return false;
     }
     else if (isEmailValid() === false) {
+        emailValidationMsgReset();
         emailAlert.style.display = "block";
-        emailFormatMsg.style.display = "none";
-        emailMsg.style.display = "none";
         return false;
     }
     else if (!email.value.match(mailformat)) {
-        emailAlert.style.display = "none";
+        emailValidationMsgReset();
         emailFormatMsg.style.display = "block";
-        emailMsg.style.display = "none";
         return false;
     }
     else {
-        emailAlert.style.display = "none";
-        emailMsg.style.display = "none";
-        emailFormatMsg.style.display = "none";
+        emailValidationMsgReset();
         return true;
     }
 }
 function mobileValidation() {
     if (mobileno.value === "") {
+        mobileValidationMsgReset();
         mobileMsg.style.display = "block";
-        mobileNan.style.display = "none"
-        mobilelengthmsg.style.display = "none"
         return false;
     }
     else if (isNaN(mobileno.value)) {
-        mobileMsg.style.display = "none";
-        mobilelengthmsg.style.display = "none"
+        mobileValidationMsgReset();
         mobileNan.style.display = "block";
         return false;
     }
     else if (mobileno.value.length < 10) {
-        mobilelengthmsg.style.display = "block"
-        mobileMsg.style.display = "none";
-        mobileNan.style.display = "none"
+        mobileValidationMsgReset();
+        mobilelengthmsg.style.display = "block";
+        return false;
     }
     else {
-        mobilelengthmsg.style.display = "none"
-        mobileMsg.style.display = "none";
-        mobileNan.style.display = "none"
+        mobileValidationMsgReset();
+        return true;
     }
 }
 function genderValidation() {
@@ -358,6 +366,7 @@ function resetForm() {
     dob.value = "";
     genderValueReset();
     qualifications.value = "select";
+    profile.value = null;
     validationMessages();
     previewprofile.value = null;
     previewdiv.style.display = "none";
