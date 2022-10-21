@@ -9,8 +9,6 @@ Clone the application from `git clone https://github.com/yogesh-haryana/registra
 
 `live server`
 
-
-### Launch the Live Server
-
+### Launch the Live Server by clicking 'Go Live' button
 
 Code is now running on port 5500.

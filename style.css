@@ -4,7 +4,6 @@
     box-sizing: border-box;
     font-family: 'Merriweather', serif;
 }
-
 .page-container {
     margin-top: 75px;
     display: flex;
@@ -18,7 +17,6 @@
     padding: 19px 30px;
     border-radius: 5px;
     border: 1px solid #ccc;
-
 }
 .container .title{
     font-size: 25px;
@@ -42,7 +40,6 @@ form .user-details .form-field input, select {
     font-size: 15px;
     border-bottom-width:2px ;
     border-radius: 6px;
-
 }
 form .user-details .form-field label {
     display: block;
@@ -52,7 +49,6 @@ form .user-details .form-field label {
 form .user-details .form-field input:focus,select:focus{
     border-color: #5a71e4;
 }
-
 .tab-container {
     z-index: 1;
     position: fixed;
@@ -62,16 +58,13 @@ form .user-details .form-field input:focus,select:focus{
     height: 35px;
     background-color: #98A8F8;
     align-items: center;
-
 }
 .reg-btn{
     margin-left: 19%;
 }
 .tablinks{
     align-items: center;
-
 }
-
 .tab-container button {
     color: #fff;
     background-color: inherit;
@@ -87,15 +80,12 @@ form .user-details .form-field input:focus,select:focus{
     display: flex;
     justify-content: center;
 }
-
 .tab-container button:hover {
     background-color: #425F57;
 }
-
 .tab-container button.active {
     background-color: #ccc;
 }
-
 .tabcontent {
     display: none;
     padding: 6px 12px;
@@ -117,7 +107,6 @@ form .form-field .gender-class label {
 .form-button-container{
     margin-left: 60%;
 }
-
 #resetbtn {
     width:80px;
     display: inline-block;
@@ -128,7 +117,6 @@ form .form-field .gender-class label {
     border: none;
     border-radius: 4px;
     cursor: pointer;
-
 }
 .stylebtn {
     width: 80px;
@@ -139,27 +127,21 @@ form .form-field .gender-class label {
     border: none;
     border-radius: 4px;
     cursor: pointer;
-
 }
 #updatebtn {
     background-color: #0ba448;
 }
-
-
 form .valid-msg {
     color: red;
     display: none;
 }
-
 #user-dp {
     height: 200px;
     width: 180px;
 }
 .dp-holder{
     text-align: center;
-
 }
-
 #view-table {
     margin: 30px auto 0 auto;
 }
@@ -172,8 +154,7 @@ form .valid-msg {
     margin-top: 51px;
     display: flex;
     justify-content: center;
-    height: 100vh;
-    
+    height: 100vh;   
 }
 .table-container{
     max-width: 850px;
@@ -181,7 +162,6 @@ form .valid-msg {
     padding: 19px 10px; 
     border-radius: 5px;
     border: 1px solid #ccc;
-
 }
 .titlelist{
     font-size: 25px;
@@ -210,7 +190,6 @@ form .valid-msg {
 .user-table, .user-table th, .user-table td {
     border: 1px solid;
 }
-
 .user-table{
     margin-top: 30px;
     border-collapse: collapse;
@@ -224,22 +203,17 @@ form .valid-msg {
 table.dataTable thead th, table.dataTable thead td{
     background: burlywood;
 }
-
 td a {
     font-size: 1.2rem;
     cursor: pointer;
     text-decoration: none;
-    /* color: green; */
 }
-
 td a:hover {
     color: blue;
 }
-
 td a:active {
     color: blue;
 }
-
 .overlay {
     position: fixed;
     top: 0;
@@ -251,12 +225,10 @@ td a:active {
     visibility: hidden;
     opacity: 0;
 }
-
 .overlay:target {
     visibility: visible;
     opacity: 1;
 }
-
 .popup {
     margin: 70px auto;
     padding: 20px;
@@ -274,13 +246,10 @@ td a:active {
     font-size: 30px;
     color: #333;
     text-decoration: none;
-
 }
 #close:hover {
     color: red;
-
 }
-
 .popup.content {
     max-height: 45%;
     overflow: auto;

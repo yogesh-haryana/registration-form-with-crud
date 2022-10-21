@@ -12,6 +12,7 @@ function openTab(event, buttonName) {
     document.getElementById(buttonName).style.display = "block";
     // event.target.className += " active";
 }
+
 openTab(event, 'Registration');
 const deleteMsg = document.getElementById("delete-success");
 const usernameMsg = document.getElementById("usernameMsg");
@@ -29,11 +30,12 @@ const saveIndex = document.getElementById("saveIndex");
 const submitbtn = document.getElementById("submitbtn");
 const updatebtn = document.getElementById("updatebtn");
 const previewprofile = document.getElementById("preview-profile");
-const previewdiv = document.getElementById("preview-div")
+const previewdiv = document.getElementById("preview-div");
 const mobileNan = document.getElementById("mobileNan");
 const mobilelengthmsg = document.getElementById("mobilelengthmsg");
 const popupContent = document.getElementsByClassName("content")[0];
-const userdp = document.getElementById("user-dp")
+const userdp = document.getElementById("user-dp");
+const alphanumerciMsg = document.getElementById("alphanumerciMsg");
 
 let username = document.studentForm.username;
 let email = document.studentForm.email;
@@ -58,103 +60,132 @@ function onFormSubmit(event) {
 }
 
 // --------------------form validation---------------------
+
 function formValidation() {
-    let validationstatus = true
-    if (usernameValidation() === false) {
-        validationstatus = false
+    let validationstatus = true;
+    switch (true) {
+        case (usernameValidation() === false):
+            validationstatus = false;
+            break;
+
+        case (EmailFunction() === false):
+            validationstatus = false;
+            break;
+
+        case (isEmailValid() === false):
+            validationstatus = false;
+            break;
+
+        case (mobileValidation() === false):
+            validationstatus = false;
+            break;
+
+        case (genderValidation() === false):
+            validationstatus = false;
+            break;
+
+        case (dobValidation() === false):
+            validationstatus = false;
+            break;
+
+        case (qualificationValidation() === false):
+            validationstatus = false;
+            break;
+
+        case (imageValidation() === false):
+            uploadImage();
+            validationstatus = false;
+            break;
+
+        default:
+            validationstatus = true;
+            break;
     }
-    if (EmailFunction() === false) {
-        validationstatus = false
-    }
-    if (isEmailValid() === false) {
-        validationstatus = false
-    }
-    if (mobileValidation() === false) {
-        validationstatus = false
-    }
-    if (genderValidation() === false) {
-        validationstatus = false
-    }
-    if (dobValidation() === false) {
-        validationstatus = false
-    }
-    if (qualificationValidation() === false) {
-        validationstatus = false
-    }
-    if (imageValidation() === false) {
-        uploadImage();
-        validationstatus = false
-    }
-    return validationstatus
+    return validationstatus;
 }
+
+const usernameValidationMsgReset = () => {
+    usernameMsg.style.display = "none";
+    alphanumerciMsg.style.display = "none";
+}
+
+const emailValidationMsgReset = () => {
+    emailAlert.style.display = "none";
+    emailMsg.style.display = "none";
+    emailFormatMsg.style.display = "none";
+}
+
+const mobileValidationMsgReset = () => {
+    mobilelengthmsg.style.display = "none";
+    mobileMsg.style.display = "none";
+    mobileNan.style.display = "none";
+};
 
 function usernameValidation() {
     if (username.value === "") {
+        usernameValidationMsgReset();
         usernameMsg.style.display = "block";
         return false;
     }
+    else if (/[^a-zA-Z0-9\-\/]/.test(username.value)) {
+        usernameValidationMsgReset();
+        alphanumerciMsg.style.display = "block";
+        return false;
+    }
     else {
-        usernameMsg.style.display = "none";
+        usernameValidationMsgReset();
         return true;
     }
 }
 function EmailFunction() {
     var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     if (email.value === "") {
+        emailValidationMsgReset();
         emailMsg.style.display = "block";
-        emailFormatMsg.style.display = "none";
-        emailAlert.style.display = "none";
         return false;
     }
     else if (isEmailValid() === false) {
+        emailValidationMsgReset();
         emailAlert.style.display = "block";
-        emailFormatMsg.style.display = "none";
-        emailMsg.style.display = "none";
         return false;
     }
     else if (!email.value.match(mailformat)) {
-        emailAlert.style.display = "none";
+        emailValidationMsgReset();
         emailFormatMsg.style.display = "block";
-        emailMsg.style.display = "none";
-
         return false;
     }
     else {
-        emailAlert.style.display = "none";
-        emailMsg.style.display = "none";
-        emailFormatMsg.style.display = "none";
+        emailValidationMsgReset();
         return true;
     }
 }
 function mobileValidation() {
     if (mobileno.value === "") {
+        mobileValidationMsgReset();
         mobileMsg.style.display = "block";
         return false;
     }
     else if (isNaN(mobileno.value)) {
-        mobileMsg.style.display = "none";
-        mobilelengthmsg.style.display = "none"
+        mobileValidationMsgReset();
         mobileNan.style.display = "block";
         return false;
     }
     else if (mobileno.value.length < 10) {
-        mobilelengthmsg.style.display = "block"
-        mobileMsg.style.display = "none";
-        mobileNan.style.display = "none"
-    }
-    else {
-        mobilelengthmsg.style.display = "none"
-        mobileMsg.style.display = "none";
-        mobileNan.style.display = "none"
-    }
-
-}
-function genderValidation() {
-    if (genderValue() === null) {
-        genderMsg.style.display = "block";
+        mobileValidationMsgReset();
+        mobilelengthmsg.style.display = "block";
         return false;
     }
     else {
+        mobileValidationMsgReset();
+        return true;
+    }
+}
+function genderValidation() {
+    if (gender[0].checked !== true && gender[1].checked !== true) {
+        genderMsg.style.display = "block";
+        return false;
+    }
+    if (gender[0].checked === true || gender[1].checked === true) {
         genderMsg.style.display = "none";
         return true;
     }
@@ -178,17 +209,17 @@ function qualificationValidation() {
     }
     else {
         qualificationsMsg.style.display = "none";
-        return true
+        return true;
     }
 }
 function imageValidation() {
     if (uploadImage() === null || uploadImage() === undefined) {
-        previewdiv.style.display = "none"
+        previewdiv.style.display = "none";
         profileMsg.style.display = "block";
         return false;
     }
     else {
-        previewdiv.style.display = "block"
+        previewdiv.style.display = "block";
         profileMsg.style.display = "none";
         return true;
     }
@@ -209,13 +240,13 @@ function isEmailValid() {
 }
 
 let genderValue = () => {
-
     for (let i = 0; i < gender.length; i++) {
         if ((gender[i].checked) == true) {
             return gender[i].value;
         }
     }
 }
+
 $(document).ready(function () {
     var currentDate = new Date();
     $('#dob').datepicker({
@@ -232,8 +263,8 @@ $(document).ready(function () {
         }
     });
 });
-let genderValueReset = () => {
 
+let genderValueReset = () => {
     for (let i = 0; i < gender.length; i++) {
         gender[i].checked = false;
     }
@@ -243,6 +274,7 @@ let getSelectValue = () => {
     let selectValue = document.getElementById("qualifications").value;
     return selectValue;
 }
+
 var uploadImage = () => {
     var profileImage = document.getElementById("profile").files[0];
     if (profileImage != null && profileImage != undefined) {
@@ -254,14 +286,16 @@ var uploadImage = () => {
         let profilePictureURL = previewprofile.getAttribute("src");
         return profilePictureURL;
     }
-    else{
+    else {
         profileMsg.style.display = "block";
         previewdiv.style.display = "none";
         profilePictureURL = null;
         return profilePictureURL;
     }
 }
+
 //--------binding formdata in objects ------------------------
+
 function readFormData() {
     var formData = {};
     formData["username"] = username.value;
@@ -284,7 +318,7 @@ function saveToLocalStorage() {
     else {
         userData = [];
     }
-    userData.push(formData)
+    userData.push(formData);
     localStorage.setItem('userdata', JSON.stringify(userData));
     recordInTheTable();
 }
@@ -310,16 +344,16 @@ function recordInTheTable() {
                         <a onClick="onDelete(${index})"> <i class="fa fa-trash-o" aria-hidden="true"></i> </a> 
                         <a href="#modal" onClick="onView(${index})"> <i class="fa fa-eye" aria-hidden="true"></i> </a></td>
                  </tr>`
-
     });
     addDataToTable.innerHTML = html;
-
 }
+
 $(document).ready(function () {
     $('.user-table').DataTable()
 });
 
 function validationMessages() {
+    alphanumerciMsg.style.display = "none";
     successMsg.style.display = "none";
     updateMsg.style.display = "none";
     profileMsg.style.display = "none";
@@ -330,8 +364,8 @@ function validationMessages() {
     dobMsg.style.display = "none";
     emailMsg.style.display = "none";
     usernameMsg.style.display = "none";
-    emailAlert.style.display = "none"
-    emailFormatMsg.style.display = "none"
+    emailAlert.style.display = "none";
+    emailFormatMsg.style.display = "none";
 }
 
 //---------------clearing all input fields-----------------------
@@ -342,12 +376,15 @@ function resetForm() {
     mobileno.value = "";
     dob.value = "";
     genderValueReset();
-    qualifications.value = 'select';
+    qualifications.value = "select";
+    profile.value = null;
     validationMessages();
     previewprofile.value = null;
     previewdiv.style.display = "none";
 }
+
 //----------------edit button ------------------------------------
+
 function onEdit(index) {
     updateMsg.style.display = "none";
     successMsg.style.display = "none";
@@ -407,7 +444,6 @@ function updateRecord() {
 function onDelete(index) {
     updateMsg.style.display = "none";
     successMsg.style.display = "none";
-
     if (confirm("Are you sure to delete!") == true) {
         userData = JSON.parse(localStorage.getItem('userdata'));
         userData.splice(index, 1);
@@ -417,7 +453,6 @@ function onDelete(index) {
         localStorage.setItem('userdata', JSON.stringify(userData));
         deleteMsg.style.display = "block";
     }
-
     recordInTheTable();
 }
 
@@ -427,10 +462,8 @@ function onView(index) {
     updateMsg.style.display = "none";
     successMsg.style.display = "none";
     deleteMsg.style.display = "none";
-
     userData = JSON.parse(localStorage.getItem('userdata'));
     let showURL = userData[index].profile;
-
     let viewHtml = '';
     viewHtml += `<div class="dp-holder"><img src="${showURL}" id ="user-dp"></div>
     <table id="view-table">
@@ -458,8 +491,7 @@ function onView(index) {
         <td>Highest Qualifications : </td>
         <td>${userData[index].qualifications}</td>
     </tr>
-    </table>
-    `
+    </table>`
     popupContent.innerHTML = viewHtml;
     recordInTheTable();
 }
