@@ -43,7 +43,7 @@ Code is now running on port 5500.
 [![Watch the video](https://drive.google.com/uc?export=view&id=1J8j8lhuCBRRAUXm9SqwKh5l9p2EjkqEE)](https://drive.google.com/uc?export=view&id=10ZfbsWc6o-sOwZNYM70BDE19isWaHYPT)
 
 
-![Watch the video](https://drive.google.com/uc?export=view&id=1J8j8lhuCBRRAUXm9SqwKh5l9p2EjkqEE)
+![screenshot](https://drive.google.com/uc?export=view&id=1J8j8lhuCBRRAUXm9SqwKh5l9p2EjkqEE)
 
 ![screenshot](https://drive.google.com/uc?export=view&id=1J8j8lhuCBRRAUXm9SqwKh5l9p2EjkqEE)
 
