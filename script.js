@@ -10,7 +10,6 @@ function openTab(event, buttonName) {
         tablinks[i].className = tablinks[i].className.replace("active", "");
     }
     document.getElementById(buttonName).style.display = "block";
-    // event.target.className += " active";
 }
 
 openTab(event, 'Registration');
@@ -412,7 +411,7 @@ function onEdit(index) {
 
 //--------------------updating data--------------------------
 
-function updateRecord() {
+function updateRecord(e) {
     formValidation();
     let genderHere = document.getElementsByName("gender");
     userData = JSON.parse(localStorage.getItem('userdata'));
@@ -437,6 +436,7 @@ function updateRecord() {
     updatebtn.style.display = "none";
     updateMsg.style.display = "block";
     previewdiv.style.display = "none";
+    e.preventDefault();
 }
 
 //-----------------------delete button------------------------
